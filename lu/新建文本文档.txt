@@ -1,0 +1,183 @@
+sh -x urlupdater.sh
++ . /ac/common/scripts/gcs_common_function.sh
+++ GCS_WEB_UPDATING_FLAG=/var/gcs_webupd.lock
++ is_gcs_web_updating
++ '[' -f /var/gcs_webupd.lock ']'
++ return 0
++ '[' 0 == 1 ']'
++ MAINDIR=/ac/
++ LANGUAGEDIR=chs/11.0/
++ '[' -f /ac/i18n/eng_flag ']'
++ URLUPDATE_DIR=urlupdate
+++ free -m
+++ grep Mem
+++ awk '{print $2}'
++ MEMSIZE=3915
++ '[' 3915 -lt 1200 ']'
++ HTTP_SUMMARYFILE_SIGN_PATH=urlupdate/summary.sign
++ HTTP_INFOFILE_NAME=info.txt
++ HTTP_INFOFILE_PATH=urlupdate/info.txt
++ HTTP_DATAFILE_NAME=urllibver.txt
++ HTTP_DATAFILE_PATH=urlupdate/urllibver.txt
++ HTTP_COMP_VER_NAME=urlcompver.ini
++ HTTP_COMP_VER_PATH=urlupdate/urlcompver.ini
++ HTTP_URLLIBFILE_NAME=insideurllib.rar
++ HTTP_URLLIBFILE_PATH=urlupdate/insideurllib.rar
++ DAT_TARGET_DIR=/ac/etc/config/fw/
++ TARGET_DIR=/ac/etc/config/fw/
++ URL_LIB_NAME=insideurllib.dat
++ URL_INDEX_LIB_NAME=insidelibindex.dat
++ URL_TYPE_NAME=urltype.conf
++ TEMP_TARGET_DIR=/ac/var/tmp/
++ TEMP_TARGETFILE=/ac/var/tmp/insideurllib.rar
++ TEMP_TARGETSUMMARYFILE_SIGN=/tmp/summary.sign
++ TEMP_TARGETSUMMARYFILE=/tmp/summary.ini
++ TEMP_TARGETFILEINFO=/tmp/info.txt
++ TEMP_TARGETDATEFILE=/tmp/urllibver.txt
++ DATEFILE=/tmp/urllibdate.txt
++ LOCAL_URL_LIB_PATH=/ac/etc/config/fw/insideurllib.dat
++ LOCAL_DATE_FILE=/ac/etc/config/fw/urllibver.txt
++ ZIP_PASSWORD=sinforac20061001
++ LOGFILE=/ac/var/log/urllibupdate.log
++ acModuleFun=/ac/common/app/acModuleFun
++ TMP_COMP_VER_FILE=/ac/var/tmp/urlcompver.ini
++ COMP_VER_FILE=/ac/etc/config/fw/urlcompver.ini
++ SERVER_NAME=www.sinfors.com.cn
++ . /ac/common/scripts/keep_singleton.sh
+++ basename urlupdater.sh
++ keep_singleton urlupdater.sh
++ tmpfile=/tmp/ps_out_25604
++ ps aux
++ grep urlupdater.sh
++ grep -v 25604
++ grep -v grep
++ grep -v 'sh -c'
++ awk '{print $2}'
+++ cat /tmp/ps_out_25604
++ pids=
++ rm -rf /tmp/ps_out_25604
++ '[' -n '' ']'
++ date
++ '[' 0 -ne 0 ']'
++ rm -f /tmp/urllibver.txt
+++ rwini -r -s 0 -k SilentDomain -f /ac/etc/config/autoupdata.inf
++ UPDATEHOST=update1.sangfor.net
++ '[' 0 -ne 0 ']'
++ SERVER_NETFILE_PATH=/ac/chs/11.0/urlupdate/
++ TMP_HTTP_SUMMARYFILE_SIGN_PATH=/ac/chs/11.0/urlupdate/summary.sign
++ HTTP_SUMMARYFILE_SIGN_PATH=/ac/chs/11.0/urlupdate/summary.sign
++ TMP_HTTP_INFOFILE_PATH=/ac/chs/11.0/urlupdate/info.txt
++ HTTP_INFOFILE_PATH=/ac/chs/11.0/urlupdate/info.txt
++ TMP_HTTP_DATAFILE_PATH=/ac/chs/11.0/urlupdate/urllibver.txt
++ HTTP_DATAFILE_PATH=/ac/chs/11.0/urlupdate/urllibver.txt
++ TMP_HTTP_URLLIBFILE_PATH=/ac/chs/11.0/urlupdate/insideurllib.rar
++ HTTP_URLLIBFILE_PATH=/ac/chs/11.0/urlupdate/insideurllib.rar
++ HTTP_COMP_VER_PATH=/ac/chs/11.0/urlupdate/urlcompver.ini
++ '[' update1.sangfor.net == 0.0.0.0 ']'
++ HTTP_DATAFILE=update1.sangfor.net
++ echo 'server list:update1.sangfor.net'
++ ENABLE_SIGN_CHECK=0
++ '[' -f /ac/common/app/signverify -a -f /ac/etc/staticcfg/rulepub.key ']'
++ ENABLE_SIGN_CHECK=1
++ for i in '$HTTP_DATAFILE'
++ rm /tmp/summary.sign -rf
++ fileUrl=http://update1.sangfor.net/ac/chs/11.0/urlupdate/summary.sign
++ wget --no-cache -t 3 -T 60 http://update1.sangfor.net/ac/chs/11.0/urlupdate/summary.sign -O /tmp/summary.sign -o /dev/null
++ '[' 0 -eq 0 ']'
++ HTTP_SUMMARYFILE=http://update1.sangfor.net/ac/chs/11.0/urlupdate/summary.sign
++ HTTP_INFOFILE=http://update1.sangfor.net/ac/chs/11.0/urlupdate/info.txt
++ HTTP_DATAFILE=http://update1.sangfor.net/ac/chs/11.0/urlupdate/urllibver.txt
++ HTTP_URLLIBFILE=http://update1.sangfor.net/ac/chs/11.0/urlupdate/insideurllib.rar
++ HTTP_COMP_VER_FILE=http://update1.sangfor.net/ac/chs/11.0/urlupdate/urlcompver.ini
++ SERVER_NAME=update1.sangfor.net
++ break
++ '[' -f /tmp/summary.sign ']'
++ echo 'download summary file ok!'
++ '[' 1 -ne 0 ']'
++ /ac/common/app/signverify verify /tmp/summary.sign /tmp/summary.ini /ac/etc/staticcfg/rulepub.key 30
++ RET_LAST=0
++ '[' 0 -ne 0 ']'
+++ rwini -r -s CHECK_INFO -k netfile_path -f /tmp/summary.ini
++ NETFILE_PATH=/ac/chs/11.0/urlupdate/
++ '[' XX/ac/chs/11.0/urlupdate/ '!=' XX/ac/chs/11.0/urlupdate/ ']'
++ rm /tmp/urllibver.txt -rf
++ wget --no-cache -t 3 -T 60 http://update1.sangfor.net/ac/chs/11.0/urlupdate/urllibver.txt -O /tmp/urllibver.txt -o /dev/null
++ '[' 0 -ne 0 ']'
++ '[' -f /tmp/urllibver.txt ']'
++ echo 'download date info file ok!'
++ '[' 1 -ne 0 ']'
+++ rwini -r -s urllibver.txt -k md5 -f /tmp/summary.ini
++ SERVER_MD5=0cd136a806364493be55a598c4455926
+++ awk '{print $1}'
+++ md5sum /tmp/urllibver.txt
++ CLIENT_MD5=0cd136a806364493be55a598c4455926
++ '[' XX0cd136a806364493be55a598c4455926 '!=' XX0cd136a806364493be55a598c4455926 ']'
++ echo http://update1.sangfor.net/ac/chs/11.0/urlupdate/info.txt
++ echo http://update1.sangfor.net/ac/chs/11.0/urlupdate/urllibver.txt
++ echo http://update1.sangfor.net/ac/chs/11.0/urlupdate/insideurllib.rar
++ echo http://update1.sangfor.net/ac/chs/11.0/urlupdate/urlcompver.ini
+++ awk -F= '/^VERSION/{print $2}' /ac/etc/config/fw/urllibver.txt
++ OLDVER=20220308/09:00:00
++ echo OLDVER:20220308/09:00:00
+++ awk -F= '/^VERSION/{print $2}' /tmp/urllibver.txt
++ NEWVER=20220315/09:00:00
++ '[' 0 -ne 0 ']'
++ echo VERSION=20220315/09:00:00
+VERSION=20220315/09:00:00
++ echo NEWVER=20220315/09:00:00
++ echo 20220315/09:00:00
+++ awk -F/ '{print $1}' /tmp/urllibdate.txt
++ NEWDATE=20220315
++ rm -f /tmp/urllibdate.txt
+++ /ac/common/app/appurlsn -u
++ EXPIREDATE=20320114
++ '[' 0 -ne 0 ']'
++ '[' 20220315 -gt 20320114 ']'
++ '[' 20220308/09:00:00 = 20220315/09:00:00 ']'
+++ md5sum -b /ac/etc/config/fw/insideurllib.dat
++ temp='6a8f3880068f2f11f19c0a2c3cbdb696 */ac/etc/config/fw/insideurllib.dat'
++ '[' 0 -ne 0 ']'
+++ awk '{print $1}'
+++ echo 6a8f3880068f2f11f19c0a2c3cbdb696 '*/ac/etc/config/fw/insideurllib.dat'
++ OLD_MD5=6a8f3880068f2f11f19c0a2c3cbdb696
++ rm -f /tmp/info.txt
++ wget --no-cache -t 3 -T 60 http://update1.sangfor.net/ac/chs/11.0/urlupdate/info.txt -O /tmp/info.txt -o /dev/null
++ '[' 0 -ne 0 ']'
+++ busybox head /tmp/info.txt -n 1
++ NEW_MD5='b026cde7a1839bd8daed9e390c397ad3 insideurllib.dat'
++ '[' 1 -ne 0 ']'
+++ rwini -r -s info.txt -k md5 -f /tmp/summary.ini
++ SERVER_MD5=8c15993dd8169171e56a7dd82d1022ed
+++ md5sum /tmp/info.txt
+++ awk '{print $1}'
++ CLIENT_MD5=8c15993dd8169171e56a7dd82d1022ed
++ '[' XX8c15993dd8169171e56a7dd82d1022ed '!=' XX8c15993dd8169171e56a7dd82d1022ed ']'
++ rm -f /tmp/info.txt
++ rm -f /ac/var/tmp/urlcompver.ini
++ wget --no-cache -t 3 -T 60 http://update1.sangfor.net/ac/chs/11.0/urlupdate/urlcompver.ini -O /ac/var/tmp/urlcompver.ini -o /dev/null
++ '[' 0 -ne 0 ']'
++ '[' 1 -ne 0 -a -e /ac/var/tmp/urlcompver.ini ']'
+++ rwini -r -s urlcompver.ini -k md5 -f /tmp/summary.ini
++ SERVER_MD5=305d10faa9785e3cfa64bee7145bb15a
+++ md5sum /ac/var/tmp/urlcompver.ini
+++ awk '{print $1}'
++ CLIENT_MD5=305d10faa9785e3cfa64bee7145bb15a
++ '[' XX305d10faa9785e3cfa64bee7145bb15a '!=' XX -a XX305d10faa9785e3cfa64bee7145bb15a '!=' XX305d10faa9785e3cfa64bee7145bb15a ']'
++ '[' 6a8f3880068f2f11f19c0a2c3cbdb696 = 'b026cde7a1839bd8daed9e390c397ad3 insideurllib.dat' ']'
++ '[' -f /ac/common/scripts/urlincreaseupdate.sh ']'
++ echo '##begin urlincreaseupdate'
++ echo '/ac/common/scripts/urlincreaseupdate.sh /ac/var/tmp/ update1.sangfor.net'
++ /ac/common/scripts/urlincreaseupdate.sh /ac/var/tmp/ update1.sangfor.net
++ '[' 0 -ne 0 ']'
++ echo '##urlincreaseupdate success!'
++ '[' -f /ac/var/tmp//prerun_35.sh ']'
++ chmod a+x /ac/var/tmp//prerun_35.sh
++ /ac/var/tmp//prerun_35.sh
++ '[' 10 -ne 0 ']'
++ echo 'error: update refused, failed to execute prerun_35.sh'
++ cleanfiles
++ 7z l /ac/var/tmp/insideurllib.rar
++ awk 'BEGIN { islist=0; } { if( $1~"^--------------+" ){ islist=!islist; } if( NF==6 && islist ){ print $6; } }'
++ read fname
++ rm -rf /ac/var/tmp/insideurllib.rar
++ exit 20
